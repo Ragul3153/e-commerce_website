@@ -50,7 +50,7 @@ function Login(){
 
             <div className="m-3">
                 <label className='font-bold'>Email</label> <br></br>
-                <input type="text" className="border border-gray-500 rounded-sm outline-none p-1 w-64" placeholder="Enter Your Email" onChange={handlemail} value={email}></input>
+                <input type="email" className="border border-gray-500 rounded-sm outline-none p-1 w-64" placeholder="Enter Your Email" onChange={handlemail} value={email}></input>
             </div>  
 
             <div className="m-3">
@@ -59,12 +59,12 @@ function Login(){
             </div>  
             
             <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">
-                <button>Submit</button>
+                <button type='submit' onClick={handlesubmit}>Submit</button>
             </div>
 
             <div className="flex gap-3  m-3">
                  <p>Do you haven't account?</p> 
-                 <button className="hover:underline cursor-pointer hover:text-blue-800" onClick={handleregister}>Register</button>
+                 <button type='button' className="hover:underline cursor-pointer hover:text-blue-800" onClick={handleregister}>Register</button>
             </div>
         </form>
         </div>
