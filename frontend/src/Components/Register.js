@@ -46,7 +46,7 @@ function Register(){
             })
           }
           console.log("User registered Successfully ... ")
-          navigate("/login");
+          navigate("/");
           toast.success("User Registered Successfully ...", {
             position: "top-center",
           });
@@ -60,7 +60,7 @@ function Register(){
     };
 
     const handlelogin = () => {
-        navigate("/login")
+        navigate("/")
     }
     
     return(

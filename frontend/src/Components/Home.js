@@ -2,17 +2,9 @@ import { IoIosSearch } from "react-icons/io";
 import Logo from "../assets/Logo.png"
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
 
 
 function Home(){
-
-    const navigate = useNavigate()
-
-    const  handlelogin = () => {
-        navigate("/login")
-    }
-
     return(
         <header className="h-20 shadow-2xl">
                 <div className="h-full container mx-auto flex items-center px-4 justify-between">
@@ -38,10 +30,6 @@ function Home(){
                             <div className="bg-green-700 text-white w-5 h-5 rounded-full flex flex-items justify-center absolute -top-2 -right-3">
                                 <p className="text-sm">0</p>
                             </div>
-                        </div>
-
-                        <div className="bg-green-700 px-3 py-1 border rounded-2xl text-white font-bold">
-                            <button onClick={handlelogin}>Login</button>
                         </div>
                     </div>
                 </div>

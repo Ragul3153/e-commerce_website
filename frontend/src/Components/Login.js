@@ -26,7 +26,7 @@ function Login(){
         try{
             await signInWithEmailAndPassword(auth,email,password);
             console.log("User Logged In Successfull ...")
-            navigate("/");
+            navigate("/profile");
             toast.success("User Logged In Successfully ...", {
                  position: "top-center",
             });
@@ -59,7 +59,7 @@ function Login(){
             </div>  
             
             <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">
-                <button type='submit'>Submit</button>
+                <button type='submit' onClick={handlesubmit}>Submit</button>
             </div>
 
             <div className="flex gap-3  m-3">
