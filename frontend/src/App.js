@@ -7,6 +7,8 @@ import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import { ToastContainer } from "react-toastify";
 import Home from "./Components/Home";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (

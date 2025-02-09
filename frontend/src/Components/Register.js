@@ -8,13 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
 
 function Register(){
-
-    const navigate = useNavigate();
-
     const [email,setemail] = useState("")
     const [password,setpassword] = useState("")
     const [fname,setfname] = useState("")
     const [lname,setlname] = useState("")
+
+    const navigate = useNavigate()
 
     const handlefname = (event) => {
         setfname(event.target.value)
@@ -35,11 +34,13 @@ function Register(){
     const handleregister = async (e) =>{
         e.preventDefault();
 
-        const data = {
+        try{
+
+      const data = {
       email,
       password,
-      firstname: fname,
-      lastname: lname,
+      fname,
+      lname,
     };
 
         const dataResponse = await fetch("http://localhost:4000/api/signup",{
@@ -52,9 +53,18 @@ function Register(){
 
                 const dataApi = await dataResponse.json()
 
+                if(dataApi.success){
+                    toast.success(dataApi.message)
+                    navigate("/login")
+                }
+
+                if(dataApi.error){
+                    toast.error(dataApi.message)
+                }
+                toast(dataApi.message)
+
                 console.log("data",dataApi)
 
-        try{
           await createUserWithEmailAndPassword(auth,email,password)
           const user = auth.currentUser;
           console.log(user);
@@ -90,7 +100,7 @@ function Register(){
                 <h1 className="text-center font-bold text-2xl">Register</h1>
 
                 <div className="m-3">
-                    <label className='font-bold'>First Name</label> <br></br>
+                    <label className='font-bold block text-left '>First Name</label> <br></br>
                     <input type="text" className="border border-gray-500 rounded-sm outline-none p-1 w-64" onChange={handlefname} placeholder="Enter Your First Name"></input>
                 </div>
 
@@ -109,8 +119,8 @@ function Register(){
                     <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-64" onChange={handlepassword} placeholder="Enter Your Password"></input>
                 </div>
                 
-                <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">
-                    <button>Register</button>
+                <div className="m-3">
+                    <button className="text-center font-bold px-24 py-1 bg-blue-600 border rounded-sm border-transparent text-white">Register</button>
                 </div>
 
                 <div className="flex gap-3  m-3">

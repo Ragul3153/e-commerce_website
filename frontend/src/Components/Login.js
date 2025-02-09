@@ -24,8 +24,32 @@ function Login(){
 
     const handlesubmit = async(e) => {
         e.preventDefault();
-        
+
+            const data = {
+            email: email,
+            password: password
+        };
+
         try{
+
+            const dataResponse = await  fetch(SummaryApi.signIn.url,{
+            method : SummaryApi.signIn.method,
+            credentials : "include",
+            headers : {
+                "content-type" : "application/json"
+            },
+            body : JSON.stringify(data)
+        })
+
+        const dataApi = await dataResponse.json()
+        
+        if(dataApi.success){
+            toast.success(dataApi.message)
+        }
+        if(dataApi.error){
+            toast.error(dataApi.message)
+        }
+
             await signInWithEmailAndPassword(auth,email,password);
             console.log("User Logged In Successfull ...")
             navigate("/");
@@ -57,7 +81,7 @@ function Login(){
 
             <div className="m-3">
                 <label className='font-bold'>Password</label> <br></br>
-                <input type="text" className="border border-gray-500 rounded-sm outline-none p-1 w-64"  placeholder="Enter Your Password" onChange={handlepassword} value={password}></input>
+                <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-64"  placeholder="Enter Your Password" onChange={handlepassword} value={password}></input>
             </div>  
             
             <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">

@@ -7,7 +7,7 @@ async function userSignUpController(req,res) {
     try{
         const { email, password,  fname, lname } = req.body
         
-        const user = await usermodel.findone({email})
+        const user = await usermodel.findOne({email})
 
         if(user){
             throw new Error("Already user exits")
@@ -38,6 +38,7 @@ async function userSignUpController(req,res) {
 
         const payload = {
             ...req.body,
+            role : "GENERAL",
             password : hashPassword
         }
 
