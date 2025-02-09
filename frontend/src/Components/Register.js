@@ -34,6 +34,26 @@ function Register(){
 
     const handleregister = async (e) =>{
         e.preventDefault();
+
+        const data = {
+      email,
+      password,
+      firstname: fname,
+      lastname: lname,
+    };
+
+        const dataResponse = await fetch("http://localhost:4000/api/signup",{
+                method : "post",
+                headers :  {
+                    "content-type" : "application/json"
+                },
+                body : JSON.stringify(data)
+                })
+
+                const dataApi = await dataResponse.json()
+
+                console.log("data",dataApi)
+
         try{
           await createUserWithEmailAndPassword(auth,email,password)
           const user = auth.currentUser;
@@ -86,7 +106,7 @@ function Register(){
 
                 <div className="m-3">
                     <label className='font-bold'>Password</label> <br></br>
-                    <input type="text" className="border border-gray-500 rounded-sm outline-none p-1 w-64" onChange={handlepassword} placeholder="Enter Your Password"></input>
+                    <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-64" onChange={handlepassword} placeholder="Enter Your Password"></input>
                 </div>
                 
                 <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">

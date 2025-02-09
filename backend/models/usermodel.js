@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 
-const userSchema = neww.mongoose.Schema({
-    name : String,
+const userSchema = new mongoose.Schema({
+    fname : String,
+    lname : String,
     email : {
         type : String,
         unique : true,
@@ -11,3 +12,7 @@ const userSchema = neww.mongoose.Schema({
 },{
     timestamps : true
 })
+
+const usermodel = mongoose.model("user",userSchema)
+
+module.exports = usermodel
