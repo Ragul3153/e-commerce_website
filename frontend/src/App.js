@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -8,9 +8,27 @@ import Profile from "./Components/Profile";
 import { ToastContainer } from "react-toastify";
 import Home from "./Components/Home";
 import 'react-toastify/dist/ReactToastify.css';
+import SummaryApi from "./common";
 
 
 function App() {
+
+  const fetchUserDetails = async () => {
+    const dataResponse = await fetch (SummaryApi.current_user.url,{
+      method : SummaryApi.current_user.method,
+      credentials : "include"
+    })
+
+    const dataApi = await dataResponse.json()
+
+    console.log("data-user",dataResponse)
+
+  }
+
+  useEffect(()=>{
+    fetchUserDetails()
+  },[])
+
   return (
     <Router>
       <div className="App">

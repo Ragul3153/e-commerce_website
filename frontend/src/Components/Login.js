@@ -4,7 +4,7 @@ import { auth } from './config';
 import { ToastContainer,toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
-import SummaryApi from '../common';
+import SummaryApi from '../common/index';
 
 
 function Login(){
@@ -32,8 +32,8 @@ function Login(){
 
         try{
 
-            const dataResponse = await  fetch(SummaryApi.signIn.url,{
-            method : SummaryApi.signIn.method,
+            const dataResponse = await fetch("http://localhost:4000/api/signin",{
+            method : "post",
             credentials : "include",
             headers : {
                 "content-type" : "application/json"
@@ -43,8 +43,9 @@ function Login(){
 
         const dataApi = await dataResponse.json()
         
-        if(dataApi.success){
+        if(dataApi.success){ 
             toast.success(dataApi.message)
+            navigate("/")
         }
         if(dataApi.error){
             toast.error(dataApi.message)

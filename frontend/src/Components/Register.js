@@ -58,7 +58,7 @@ function Register(){
                     navigate("/login")
                 }
 
-                if(dataApi.error){
+                if(dataApi.error){  
                     toast.error(dataApi.message)
                 }
                 toast(dataApi.message)
