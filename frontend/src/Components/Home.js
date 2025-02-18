@@ -2,10 +2,14 @@ import { IoIosSearch } from "react-icons/io";
 import Logo from "../assets/Logo.png"
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Home(){
+
+    const user = userSelector(state => state?.user?.user)
+
+    console.log("user header",user)
 
     const navigate = useNavigate()
 
@@ -17,7 +21,9 @@ function Home(){
         <header className="h-20 shadow-2xl">
                 <div className="h-full container mx-auto flex items-center px-4 justify-between">
                     <div className="w-20 h-20">
-                        <img src={Logo}></img>
+                        <Link to={"/"}>
+                            <img src={Logo}></img>
+                        </Link>
                     </div>
 
                     <div className="hidden md:flex items-center w-full justify-between max-w-sm border rounded-full  focus-within:shadow-lg pl-2">
@@ -29,6 +35,9 @@ function Home(){
 
                     <div className="flex items-ceter gap-5">
                         <div className="text-3xl md:text-3xl cursor-pointer">
+                            {
+                                user.profilepic
+                            }
                             <FaUser />
                         </div>
 

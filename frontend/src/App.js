@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import Home from "./Components/Home";
 import 'react-toastify/dist/ReactToastify.css';
 import SummaryApi from "./common";
-import Context from "./context";
+import Context from "./Context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 
