@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { auth } from './config';
 import { ToastContainer,toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +10,7 @@ import SummaryApi from '../common/index';
 function Login(){
 
     const navigate = useNavigate();
+    const { fetchUserDetails } = useContext(Context)
 
     const [email,setemail]=useState("")
     const [password,setpassword] = useState("")
@@ -46,6 +47,7 @@ function Login(){
         if(dataApi.success){ 
             toast.success(dataApi.message)
             navigate("/")
+            fetchUserDetails()
         }
         if(dataApi.error){
             toast.error(dataApi.message)

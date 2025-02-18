@@ -9,9 +9,14 @@ import { ToastContainer } from "react-toastify";
 import Home from "./Components/Home";
 import 'react-toastify/dist/ReactToastify.css';
 import SummaryApi from "./common";
+import Context from "./context";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "./store/userSlice";
 
 
 function App() {
+
+  const dispatch = useDispatch()
 
   const fetchUserDetails = async () => {
     const dataResponse = await fetch (SummaryApi.current_user.url,{
@@ -20,6 +25,10 @@ function App() {
     })
 
     const dataApi = await dataResponse.json()
+
+    if(dataApi.success){
+      dispatch(setUserDetails(dataApi.data))
+    }
 
     console.log("data-user",dataResponse)
 
@@ -32,6 +41,9 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Context.Provider value = {(
+          fetchUserDetails
+        )}>
         <ToastContainer/>
         <div className="auth-wrapper">
           <div className="auth-inner">
@@ -43,6 +55,7 @@ function App() {
             </Routes>
           </div>
         </div>
+        </Context.Provider>
       </div>
     </Router>
   );
