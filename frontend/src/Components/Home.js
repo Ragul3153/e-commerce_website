@@ -3,18 +3,40 @@ import Logo from "../assets/Logo.png"
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from "react-toastify"
+import { setUserDetails } from "../store/userSlice";
+import { useState } from "react";
 
 
 function Home(){
 
-    const user = userSelector(state => state?.user?.user)
-
-    console.log("user header",user)
+    const user = useSelector(state => state?.user?.user)
+    const dispatch = useDispatch()
+    const [menudisplay,setmenudisplay] = useState(false)
 
     const navigate = useNavigate()
 
     const  handlelogin = () => {
         navigate("/login")
+    }
+
+    const handleLogout = async() => {
+        const fetchData = await fetch(SummaryApi.logout_user.url,{
+            method : SummaryApi.logout_user.method,
+            credentials : "include"
+        })
+
+        const data = await fetchData.json()
+
+        if(data.success){
+            toast.success(data.message)
+            dispatch(setUserDetails(null))
+        }
+
+        if(data.error){
+            toast.success(data.message)
+        }
     }
 
     return(
@@ -34,13 +56,23 @@ function Home(){
                     </div>
 
                     <div className="flex items-ceter gap-5">
-                        <div className="text-3xl md:text-3xl cursor-pointer">
-                            {
-                                user.profilepic
-                            }
-                            <FaUser />
-                        </div>
+                        <div className="relative group flex justify-center">
+                            <div className="text-3xl md:text-3xl cursor-pointer" onClick={()=>setmenudisplay(preve => !preve)}>
+                                <FaUser />
+                            </div>
 
+                            {
+                                menudisplay && (
+                                 <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
+                                    <nav>
+                                        <Link to={"admin-panel"} className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2" onClick={()=>setmenudisplay(preve => !preve)}>Admin Panel</Link>
+                                    </nav>
+                                 </div>
+                                )
+                            }
+
+                        </div>
+                        
                         <div className="text-3xl relative">
                             <FaShoppingCart />
 
@@ -50,7 +82,14 @@ function Home(){
                         </div>
 
                         <div className="bg-green-700 px-3 py-1 border rounded-2xl text-white font-bold">
-                            <button onClick={handlelogin}>Login</button>
+                            {
+                                user?._id ? (
+                                    <button onClick={handleLogout}>Logout</button>
+                                )
+                                : (
+                                <button onClick={handlelogin}>Login</button>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
