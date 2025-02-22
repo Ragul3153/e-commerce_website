@@ -1,5 +1,4 @@
-const url = `.................lin varum inga run time 6.20`
-
+const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`
 const uploadImage = async(image) => {
     const formData = new FormData()
     formData.append("file",image)

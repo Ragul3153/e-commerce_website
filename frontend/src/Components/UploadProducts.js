@@ -40,12 +40,13 @@ const UploadProducts = ({
         const file = e.target.files[0]
         const uploadImageColudinary = await uploadImage(file)
 
-        setdata((preve)=>{
-            return{
-                ...preve,
-                productImage : [ ...preve.productImage, uploadImageColudinary.url ]
-            }
-        })
+        // setdata((preve)=>{
+        //     return{
+        //         ...preve,
+        //         productImage : [ ...preve.productImage, uploadImageColudinary.url ]
+        //     }
+        // })
+        console.log("upload Image",uploadImageColudinary)
     }
 
     const handledelete = async(index) => {
