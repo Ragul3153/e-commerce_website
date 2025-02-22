@@ -5,6 +5,7 @@ import Login from "../Components/Login";
 import Adminpanel from "../pages/Adminpanel";
 import Register from "../Components/Register";
 import Allproduct from "../pages/Allproduct";
+import Allusers from "../pages/Allusers"
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
                 element : <Register/>
             },
             {
-                path : "adminpanel",
+                path : "admin-panel",
                 element : <Adminpanel/>,
                 children : [
                     {

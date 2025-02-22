@@ -8,25 +8,32 @@ import ChangeuserRole from "../Components/ChangeuserRole";
 const Allusers = () => {
 
     const [alluser,setalluser] = useState([])
-
-    const fetchAllUsers = async fetch(SummaryApi.allusers.url,{
-        method : SummaryApi.allusers.method,
-        Credential : "include"
+    const [openupdaterole,setopenupdaterole] = useState(false)
+    const [updateuserdetails,setupdateuserdetails] = useState({
+        email : "",
+        name : "",
+        role : "",
+        _id  : ""
     })
 
-    const dataResponse = await fetchData.json()
+    const fetchAllUsers = async() =>{
+        const fetchData = await fetch(SummaryApi.allusers.url,{
+            method : SummaryApi.allusers.method,
+            credentials : 'include'
+        })
 
-    if(dataResponse.success){
-        setalluser(dataResponse.data)
+        const dataResponse = await fetchData.json()
+
+        if(dataResponse.success){
+            setalluser(dataResponse.data)
+        }
+
+        if(dataResponse.error){
+            toast.error(dataResponse.message)
+        }
+
     }
-
-    if(dataResponse.error){
-        toast.error(dataResponse.message)
-    }
-
-    console.log(dataResponse)
-
- }
+ 
 
  useEffect(()=>{
     fetchAllUsers()
@@ -49,14 +56,19 @@ const Allusers = () => {
                 {
                     alluser.map((el,index) => {
                         return(
-                            <tr>
+                            <tr className="bg-black text-white">
                                 <td>{index+1}</td>
                                 <td>{el?.name}</td>
                                 <td>{el?.email}</td>
                                 <td>{el?.role}</td>
                                 <td>{moment(el?.createdAt).format('LL')}</td>
                                 <td>
-                                    <button className="bg-green-200 p-2 rounded-full cursor-pointer hover:bg-green-200 hover:text-white">
+                                    <button className="bg-green-200 p-2 rounded-full cursor-pointer hover:bg-green-200 hover:text-white" 
+                                    onClick={()=>{
+                                        setupdateuserdetails(el)
+                                        setopenupdaterole(true)
+                                    }}
+                                        >
                                         <MdModeEdit/>
                                     </button>
                                 </td>
@@ -66,10 +78,21 @@ const Allusers = () => {
                 }
             </tbody>
         </table>
-
-        <ChangeuserRole/>
+        {
+            openupdaterole && (
+                <ChangeuserRole 
+                onclose={()=>setopenupdaterole(false)}  
+                name={updateuserdetails.name}
+                email={updateuserdetails.email}
+                role={updateuserdetails.role}
+                userId={updateuserdetails._id}
+                callFunc={fetchAllUsers}
+                />
+                
+            )
+        }
                 
     </div>
 )
-
+}
  export default Allusers

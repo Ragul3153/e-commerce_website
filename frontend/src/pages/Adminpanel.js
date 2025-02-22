@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from 'react-redux'
 import { FaUser } from "react-icons/fa";
-import { Link,Outlet } from 'react-router-dom'
+import { Link,Outlet, useNavigate } from 'react-router-dom'
 
 const Adminpanel = () => {
     const user = useSelector(state => state?.user?.user)
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(user?.role !== 'GENERAL'){
+            navigate("/")
+        }
+    },[user])
+
     return( 
         <div className="min-h-[calc(100vh-120px)] md:flex hidden">
             <aside className="bg-white min-h-full w-full max-w-60 customshadow">
@@ -19,8 +27,8 @@ const Adminpanel = () => {
                     {/***navigation */}
                 <div>
                     <nav className="grid">
-                        <Link to={"all users"} className="px-2 py-1 hover:bg-slate-100">All Users</Link>
-                        <Link to={"all-product"} className="px-2 py-1 hover:bg-slate-100">All product</Link>
+                        <Link to="/admin-panel/all-users" className="px-2 py-1 hover:bg-slate-100">All Users</Link>
+                        <Link to="/admin-panel/all-product" className="px-2 py-1 hover:bg-slate-100">All product</Link>
                     </nav>
                 </div>
 

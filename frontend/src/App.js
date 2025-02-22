@@ -12,7 +12,10 @@ import SummaryApi from "./common";
 import Context from "./Context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
-
+import Adminpanel from "./pages/Adminpanel";
+import Allproduct from "./pages/Allproduct";
+import Allusers from "./pages/Allusers";
+import Navbar from "./Components/navbar";
 
 function App() {
 
@@ -38,25 +41,29 @@ function App() {
   },[])
 
   return (
-    <Router>
+    // <Router>
       <div className="App">
-        <Context.Provider value = {(
+        <Context.Provider value = {{
           fetchUserDetails
-        )}>
+        }}>
         <ToastContainer/>
         <div className="auth-wrapper">
           <div className="auth-inner">
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/register" element={<Register/>}/>
               <Route path="/profile" element={<Profile/>}/>
+              <Route path="/admin-panel" element={<Adminpanel/>}/>
+              <Route path="/admin-panel/all-product" element={<Allproduct/>}/>
+              <Route path="/admin-panel/all-users" element={<Allusers/>}/>
             </Routes>
           </div>
         </div>
         </Context.Provider>
       </div>
-    </Router>
+    // </Router>
   );
 }
 

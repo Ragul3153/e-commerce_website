@@ -7,7 +7,7 @@ async function allusers(){
         const alluser = await usermodel.find()
 
         res.json({
-            message : "All User"
+            message : "All User",
             data : alluser,
             success : true,
             error : false
