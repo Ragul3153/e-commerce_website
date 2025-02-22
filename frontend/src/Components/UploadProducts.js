@@ -7,6 +7,7 @@ import DispalyImage from './DispalyImage';
 import { MdDelete } from "react-icons/md";
 import SummaryApi from '../common';
 import { toast } from 'react-toastify'
+import { IoMdClose } from "react-icons/io";
 
 const UploadProducts = ({
     onClose
@@ -91,10 +92,10 @@ const UploadProducts = ({
     <div className='fixed w-full h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
         <div className='bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
            
-            <div className='flex justify-between items-center pb-3'>
-                <h2 className='font-bold text-lg'>Upload Products</h2>
-                <div className='w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer' onClick={onClose}>
-                    <cgClose/>
+            <div className='flex justify-around items-center pb-3'>
+                <h2 className='font-bold text-lg '>Upload Products </h2>
+                <div className='w-fit ml-auto text-2xl hover:text-green-600 cursor-pointer ' onClick={onClose}>
+                    <IoMdClose />
                 </div>
             </div>
 
@@ -167,7 +168,7 @@ const UploadProducts = ({
 
                     </textarea>
 
-                    <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Upload Product</button>
+                    <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-green-700'>Upload Product</button>
 
             </form>
         </div>

@@ -59,10 +59,10 @@ function Login(){
 
             await signInWithEmailAndPassword(auth,email,password);
             console.log("User Logged In Successfull ...")
-            navigate("/");
             toast.success("User Logged In Successfully ...", {
                  position: "top-center",
             });
+            navigate("/");
         } catch(error) {
             console.log(error.message);
              toast.error("User Logged In Failed ...", {
@@ -91,8 +91,8 @@ function Login(){
                 <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-64"  placeholder="Enter Your Password" onChange={handlepassword} value={password}></input>
             </div>  
             
-            <div className="m-3 text-center p-1 bg-blue-600 border rounded-sm border-transparent text-white">
-                <button type='submit'>Submit</button>
+            <div className="m-3">
+                <button className='text-center p-1 bg-blue-600 px-24 py-1 border rounded-sm border-transparent text-white' type='submit'>Submit</button>
             </div>
 
             <div className="flex gap-3  m-3">

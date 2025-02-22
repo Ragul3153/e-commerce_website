@@ -100,7 +100,7 @@ function Register(){
                 <h1 className="text-center font-bold text-2xl">Register</h1>
 
                 <div className="m-3">
-                    <label className='font-bold block text-left '>First Name</label> <br></br>
+                    <label className='font-bold'>First Name</label> <br></br>
                     <input type="text" className="border border-gray-500 rounded-sm outline-none p-1 w-64" onChange={handlefname} placeholder="Enter Your First Name"></input>
                 </div>
 

@@ -36,6 +36,7 @@ const Navbar = () => {
         if(data.success){
             toast.success(data.message)
             dispatch(setUserDetails(null))
+            navigate("/login")
         }
 
         if(data.error){
