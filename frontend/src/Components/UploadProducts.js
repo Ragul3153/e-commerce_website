@@ -10,7 +10,8 @@ import { toast } from 'react-toastify'
 import { IoMdClose } from "react-icons/io";
 
 const UploadProducts = ({
-    onClose
+    onClose,
+    fetchData 
 }) => {
 
     const [data,setdata] = useState({
@@ -40,12 +41,12 @@ const UploadProducts = ({
         const file = e.target.files[0]
         const uploadImageColudinary = await uploadImage(file)
 
-        // setdata((preve)=>{
-        //     return{
-        //         ...preve,
-        //         productImage : [ ...preve.productImage, uploadImageColudinary.url ]
-        //     }
-        // })
+        setdata((preve)=>{
+            return{
+                ...preve,
+                productImage : [ ...preve.productImage, uploadImageColudinary.url ]
+            }
+        })
         console.log("upload Image",uploadImageColudinary)
     }
 
@@ -67,23 +68,23 @@ const UploadProducts = ({
         e.preventDefault()
 
         const response = await fetch(SummaryApi.uploadProduct.url,{
-            method : SummaryApi.uploadProduct.method,
-            credentials : "include",
-            headers : {
-                "content-type" : "application.json"
+            method: SummaryApi.uploadProduct.method,
+            credentials: "include",
+            headers: {
+                "content-type": "application/json"
             },
-            body : JSON.stringfy(data)
+            body: JSON.stringify(data)
         })
 
         const responseData = await response.json()
 
-        if(response.success){
+        if(responseData.success){
             toast.success(responseData?.message)
             onClose()
+            fetchData()
         }
 
-         if(response.error())
-        {
+        if(responseData.error){
             toast.error(responseData?.message)
         }
 
@@ -129,7 +130,7 @@ const UploadProducts = ({
                         </div>    
                 </div>
                     </label>
-                <div>
+                <div className='flex gap-3'>
                     {
                         data?.productImage[0] ? (
                             <div className='flex items-center gap-2'>

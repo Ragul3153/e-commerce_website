@@ -83,16 +83,16 @@ function Login(){
 
             <div className="m-3">
                 <label className='font-bold'>Email</label> <br></br>
-                <input type="email" className="border border-gray-500 rounded-sm outline-none p-1 w-64" placeholder="Enter Your Email" onChange={handlemail} value={email}></input>
+                <input type="email" className="border border-gray-500 rounded-sm outline-none p-1 w-60" placeholder="Enter Your Email" onChange={handlemail} value={email}></input>
             </div>  
 
             <div className="m-3">
                 <label className='font-bold'>Password</label> <br></br>
-                <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-64"  placeholder="Enter Your Password" onChange={handlepassword} value={password}></input>
+                <input type="password" className="border border-gray-500 rounded-sm outline-none p-1 w-60"  placeholder="Enter Your Password" onChange={handlepassword} value={password}></input>
             </div>  
             
             <div className="m-3">
-                <button className='text-center p-1 bg-blue-600 px-24 py-1 border rounded-sm border-transparent text-white' type='submit'>Submit</button>
+                <button className='text-center font-bold px-24 py-1 bg-green-700 border rounded-sm border-transparent text-white' type='submit'>Submit</button>
             </div>
 
             <div className="flex gap-3  m-3">

@@ -1,16 +1,16 @@
-import React from 'react' 
 import React, { useState } from 'react'
 import { cgClose } from "react-icons/cg";
-import productCategory from '. ./helpers/productCategory';
+import productCategory from '../helpers/productCategory';
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { uploadImage } from '../helpers/uploadImage';
+import  uploadImage  from '../helpers/uploadImage';
 import DispalyImage from './DispalyImage';
 import { MdDelete } from "react-icons/md";
 import SummaryApi from '../common';
 import { toast } from 'react-toastify'
+import { IoMdClose } from "react-icons/io";
 
 
-export const adminEditProduct = ({
+const AdminEditProduct = ({
     onClose,
     productData,
     fetchdata
@@ -40,7 +40,7 @@ export const adminEditProduct = ({
         })
     }
 
-    const handleuploadproduct = (e) => {
+    const handleuploadproduct = async (e) => {
         const file = e.target.files[0]
         const uploadImageColudinary = await uploadImage(file)
 
@@ -67,26 +67,26 @@ export const adminEditProduct = ({
     }
 
     const handlesubmit = async(event) => {
-        e.preventDefault()
+        event.preventDefault()
 
         const response = await fetch(SummaryApi.updateProduct.url,{
             method : SummaryApi.updateProduct.method,
             credentials : "include",
             headers : {
-                "content-type" : "application.json"
+                "content-type" : "application/json"
             },
-            body : JSON.stringfy(data)
+            body : JSON.stringify(data)
         })
 
         const responseData = await response.json()
 
-        if(response.success){
+        if(responseData.success){
             toast.success(responseData?.message)
             onClose()
             fetchdata()
         }
 
-         if(response.error())
+         if(responseData.error)
         {
             toast.error(responseData?.message)
         }
@@ -100,7 +100,7 @@ export const adminEditProduct = ({
                 <div className='flex justify-between items-center pb-3'>
                     <h2 className='font-bold text-lg'>Edit Products</h2>
                     <div className='w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer' onClick={onClose}>
-                        <cgClose/>
+                        <IoMdClose />
                     </div>
                 </div>
     
@@ -188,4 +188,4 @@ export const adminEditProduct = ({
   )
 }
 
-export default adminProductEdit
+export default AdminEditProduct

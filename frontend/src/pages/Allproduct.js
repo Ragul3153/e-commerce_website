@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import UploadProducts from "../Components/UploadProducts";
 import SummaryApi from "../common";
+import AdminProduct from "../Components/AdminProduct";
+
+
  const Allproduct = () => {
 
     const [openuploadproducts,setopenuploadproducts] = useState(false)
@@ -9,8 +12,9 @@ import SummaryApi from "../common";
     const fetchallProduct = async() => {
         const response = await fetch(SummaryApi.allProduct.url)
         const dataResponse = await response.json()
+        console.log(dataResponse)
 
-        setallProduct(dataResponse?.data || [])
+        setallProduct(dataResponse?.data)
     }
 
     useEffect(()=>{
@@ -25,11 +29,11 @@ import SummaryApi from "../common";
             </div>
 
             {/**all Product */}
-            <div className="flex items-center gap-5 py-4">
+            <div className="flex items-center gap-5 py-4 flex-wrap h-[calc(100vh-130px)] overflow-y-scroll">
                 {
                     allProduct.map((product,index)=>{
                         return(
-                            <adminProduct data={product} key={index+"allProduct"} fetchdata={fetchallProduct}/>
+                            <AdminProduct data={product} key={index+"allProduct"} fetchdata={fetchallProduct}/>
 
                         )
                     })
@@ -40,7 +44,7 @@ import SummaryApi from "../common";
             {/**Upload Product Components */}
             {
                 openuploadproducts && (
-                <UploadProducts onClose={()=>setopenuploadproducts(false)}/>
+                <UploadProducts onClose={()=>setopenuploadproducts(false)} fetchData={fetchallProduct}/>
                 )
             }
             

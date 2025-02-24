@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { MdModeEditOutline } from 'react-icons/md'
+import AdminEditProduct from './AdminEditProduct'
+import displayINRCurrency from '../helpers/displayCurrency'
 
-export const adminProduct = ({
+const AdminProduct = ({
     data,
     fetchdata
 }) => {
@@ -9,15 +11,19 @@ export const adminProduct = ({
     const [editproduct,seteditproduct] = useState(false)
 
   return (
-    <div className="bg-white p-4 rounded">
+    <div className="bg-slate-200 p-4 rounded">
         <div className='w-40'>
-            <img src={data?.productImage[0]} width={120} height={120} className='w-fit mx-auto'></img>
+            <div className='w-32 h-32 flex justify-center items-center'>
+                <img src={data?.productImage[0]} className='mx-auto object-fill h-full'></img>
+            </div>
             <h1>{data.productName}</h1>
 
             <div>
 
-            <div>
-                {data.sellingPrice}
+            <div className='font-semibold'>
+                {
+                    displayINRCurrency(data.sellingPrice)
+                }
             </div>
 
 
@@ -31,7 +37,7 @@ export const adminProduct = ({
 
         {
             editproduct &&  (
-                <adminEditProduct data={data} onClose={()=>seteditproduct(false)} fetchdata={fetchdata}/>
+                <AdminEditProduct productData={data} onClose={()=>seteditproduct(false)} fetchdata={fetchdata}/>
             )
         }
 
@@ -39,4 +45,4 @@ export const adminProduct = ({
   )
 }
 
-export default adminProduct
+export default AdminProduct
