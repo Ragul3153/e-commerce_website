@@ -6,6 +6,7 @@ import Adminpanel from "../pages/Adminpanel";
 import Register from "../Components/Register";
 import Allproduct from "../pages/Allproduct";
 import Allusers from "../pages/Allusers"
+import CategoryProduct from "../pages/CategoryProduct";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path : "register",
                 element : <Register/>
+            },
+            {
+                path : "product-category/:categoryName",
+                element : <CategoryProduct/>
             },
             {
                 path : "admin-panel",

@@ -7,6 +7,24 @@ const getCategoryProduct = async(req,res)=> {
 
     console.log("category",productCategory)
 
+    //array to store one product from each category
+    const productCategory = []
+
+    for(const category of productCategory){
+        const product = await productModel.findOne({category})
+
+        if(product){
+            productByCategory.push(product)
+        }
+    }
+
+    res.json({
+        message : "category product",
+        data : productByCategory,
+        success : true,
+        error : false
+    })
+
     }catch(error){
           res.status(400).json({
             message : error.message || error,

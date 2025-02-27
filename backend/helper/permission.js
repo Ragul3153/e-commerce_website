@@ -1,7 +1,7 @@
-const userModel = require("../models/usermodel")
+const userModel = require("../../models/usermodel")
 
 const uploadProductPermission = async(userId) => {
-    const user = userModel.findById(userId)
+    const user =await userModel.findById(userId)
 
     if(user.role !== "ADMIN"){
         return false

@@ -14,8 +14,6 @@ import ROLE from "../common/role";
 
 const Navbar = () => {
     const user = useSelector(state => state?.user?.user)
-    console.log(user);
-    
     const dispatch = useDispatch()
     const [menudisplay,setmenudisplay] = useState(false)
 
