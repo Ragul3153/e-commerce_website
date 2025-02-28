@@ -7,13 +7,10 @@ import { Link } from 'react-router-dom';
 import addToCart from '../helpers/addToCart';
 import Context from '../Context';
 
-const VerticalCardProduct = ({category,heading}) => {
+    const CategoryWiseProductDisplay = ({category,heading}) => {
     const [data,setdata] = useState([])
     const [loading,setloading] = useState(true)
     const loadingList = new Array(13).fill(null)
-
-    const [scroll,setscroll] = useState(0)
-    const scrollElement = useRef()
 
     const { fetchUserAddToCart } = useContext(Context)
 
@@ -21,6 +18,9 @@ const VerticalCardProduct = ({category,heading}) => {
         await addToCart(e,id)
         fetchUserAddToCart()
     }
+
+    const [scroll,setscroll] = useState(0)
+    const scrollElement = useRef()
 
     const fetchData = asyn()=>{
         setloading(true)
@@ -34,24 +34,15 @@ const VerticalCardProduct = ({category,heading}) => {
         fetchData()
     },[])
 
-    const scrollRight = () => {
-        scrollElement.current.scrollLeft += 300
-    }
-
-     const scrollLeft = () => {
-        scrollElement.current.scrollLeft -= 300
-    }
-
+   
   return (
     <div className='container mx-auto px-4 my-6 relative'>
 
         <h2 className='text-2xl font-semibold py-4'>{heading}</h2>
  
-        <div className='flex items-center gap-4 md:gap-6 overflow-x-scroll scrollbar-none transition-all' ref={scrollElement}>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(300px, 320px))] justify-between md:gap-6 overflow-x-scroll scrollbar-none transition-all'>
 
-            <button className='bg-white shadow-md rounded-full p-1 absolute left-0 text-lg hidden md:block' onClick={scrollLeft}><FaAngleLeft /></button>
-            <button className='bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md:block' onClick={scrollRight}><FaAngleRight /></button>
-
+        
             {
 
 loading ? (
@@ -100,4 +91,4 @@ loading ? (
   )
 }
 
-export default VerticalCardProduct
+export default CategoryWiseProductDisplay

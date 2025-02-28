@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -20,6 +20,7 @@ import Navbar from "./Components/navbar";
 function App() {
 
   const dispatch = useDispatch()
+  const [cartProductCount,setProductCount] = useState(0)
 
   const fetchUserDetails = async () => {
     const dataResponse = await fetch (SummaryApi.current_user.url,{
@@ -32,19 +33,34 @@ function App() {
     if(dataApi.success){
       dispatch(setUserDetails(dataApi.data))
     }
+  }
 
+  const fetchUserAddToCart = async() => {
+     const dataResponse = await fetch (SummaryApi.addToCartProductCount.url,{
+      method : SummaryApi.addToCartProductCount.method,
+      credentials : "include"
+    })
 
+    const dataApi = await dataResponse.json()
+
+    setcartProductCount(dataApi?.data?.count)
   }
 
   useEffect(()=>{
+    /**User Details */
     fetchUserDetails()
+
+    /**User Details Cart Product */
+    fetchUserAddToCart()
   },[])
 
   return (
     // <Router>
       <div className="App">
         <Context.Provider value = {{
-          fetchUserDetails
+          fetchUserDetails, // user detail fetch
+          cartProductCount, // current user add to cart product count
+          fetchUserAddToCart
         }}>
         <ToastContainer/>
         <div className="auth-wrapper">

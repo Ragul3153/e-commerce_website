@@ -44,6 +44,22 @@ const SummaryApi = {
     categorywiseProduct : {
         url : `${backendDomain}/api/category-product`,
         method : "post"
+    },
+    productDetails : {
+        url : `${backendDomain}/api/product-details`,
+        method : "post"
+    },
+    addToCartProduct : {
+        url : `${backendDomain}/api/addtocart`,
+        method : "post"
+    },
+    addToCartProductCount : {
+        url : `${backendDomain}/api/countAddToCartProduct`,
+        method : "get"
+    },
+    addToCartViewProduct : {
+        url : `${backendDomain}/api/view-cart-product`,
+        method : "get"
     }
 }
 

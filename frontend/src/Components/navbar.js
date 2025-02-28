@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import Logo from "../assets/Logo.png"
 import { FaUser } from "react-icons/fa";
@@ -10,12 +10,14 @@ import { setUserDetails } from "../store/userSlice";
 import { useState } from "react";
 import SummaryApi from "../common/index"
 import ROLE from "../common/role";
+import Context from '../Context';
 
 
 const Navbar = () => {
     const user = useSelector(state => state?.user?.user)
     const dispatch = useDispatch()
     const [menudisplay,setmenudisplay] = useState(false)
+    const context = useContext(Context)
 
     const navigate = useNavigate()
 
@@ -84,14 +86,19 @@ const Navbar = () => {
                             }
 
                         </div>
-                        
-                        <div className="text-3xl relative">
-                            <FaShoppingCart />
+                        {
+                            user?._id && (
+                                 <Link to={"/Cart"} className="text-3xl relative">
+                                    <FaShoppingCart />
 
-                            <div className="bg-green-700 text-white w-5 h-5 rounded-full flex flex-items justify-center absolute -top-2 -right-3">
-                                <p className="text-sm">0</p>
-                            </div>
-                        </div>
+                                <div className="bg-green-700 text-white w-5 h-5 rounded-full flex flex-items justify-center absolute -top-2 -right-3">
+                                    <p className="text-sm">{Context?.cartProdutCount}</p>
+                                </div>
+                        </Link>
+                            )
+                        }
+                        
+                       
 
                         <div className="bg-green-700 px-3 py-1 border rounded-2xl text-white font-bold">
                             {

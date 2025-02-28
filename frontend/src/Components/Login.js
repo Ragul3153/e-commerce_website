@@ -11,7 +11,7 @@ import Context from '../Context/index';
 function Login(){
 
     const navigate = useNavigate();
-    const { fetchUserDetails } = useContext(Context)
+    const { fetchUserDetails, fetchUserAddToCart } = useContext(Context)
 
     const [email,setemail]=useState("")
     const [password,setpassword] = useState("")
@@ -50,6 +50,7 @@ function Login(){
         if(dataApi.success){ 
             toast.success(dataApi.message)
             fetchUserDetails()
+            fetchUserAddToCart()
             navigate("/")
             
         }

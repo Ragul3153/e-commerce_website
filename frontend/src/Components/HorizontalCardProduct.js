@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import fetchCategoryWiseProduct from '../helpers/fetchCategoryWiseProduct'
 import displayINRCurrency from '../helpers/displayCurrency'
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
+import addToCart from '../helpers/addToCart';
+import Context from '../Context';
 
 const HorizontalCardProduct = ({category,heading}) => {
     const [data,setdata] = useState([])
@@ -12,7 +14,14 @@ const HorizontalCardProduct = ({category,heading}) => {
     const [scroll,setscroll] = useState(0)
     const scrollElement = useRef()
 
-    const fetchData = asyn()=>{
+    const { fetchUserAddToCart } = useContext(Context)
+
+    const handleAddToCart = async(e,id)=>{
+        await addToCart(e,id)
+        fetchUserAddToCart()
+    }
+
+    const fetchData = async()=>{
         setloading(true)
         const categoryProduct = await fetchCategoryWiseProduct(category)
         setloading(false)
@@ -65,7 +74,7 @@ const HorizontalCardProduct = ({category,heading}) => {
 
                 data.map((product,index)=>{
                 return(
-                    <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
+                    <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
                         <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
                             <img src={product.productImage[0]} className='h-full object-scale-down hover:scale-110 transition-all'/>
                         </div>
@@ -76,11 +85,11 @@ const HorizontalCardProduct = ({category,heading}) => {
                                 <p className='text-red-600 foont-medium'>{ displayINRCurrency(product?.sellingPrice)}</p>
                                 <p className='text-slate-500 line-through'>{ displayINRCurrency(product?.price) }</p>
                             </div>  
-                            <button className='bg-red-600 text-sm hover:bg-red-600 text-white px-3 py-0.5 rounded-full'>Add to Cart</button>  
+                            <button className='bg-red-600 text-sm hover:bg-red-600 text-white px-3 py-0.5 rounded-full' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to Cart</button>  
                         </div>
-                    </div>
+                    </Link>
                 )
-            })
+            }) 
 
             )    
         }

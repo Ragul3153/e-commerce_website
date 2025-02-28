@@ -7,6 +7,8 @@ import Register from "../Components/Register";
 import Allproduct from "../pages/Allproduct";
 import Allusers from "../pages/Allusers"
 import CategoryProduct from "../pages/CategoryProduct";
+import ProductDetails from "../pages/ProductDetails";
+import Cart from "../pages/Cart";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
                 path : "product-category/:categoryName",
                 element : <CategoryProduct/>
             },
+            {
+                path : "product/:id",
+                element : <ProductDetails/>
+            },
+            {
+                path : "cart",
+                element : <Cart/>
+            }
             {
                 path : "admin-panel",
                 element : <Adminpanel/>,
