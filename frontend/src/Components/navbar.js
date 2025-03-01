@@ -20,6 +20,8 @@ const Navbar = () => {
     const context = useContext(Context)
     const navigate = useNavigate()
     const searchInput = useLocation()
+    const URLSearch = new URLSearchParams(searchInput?.search)
+    const searchQuery = URLSearch.getAll("q")
     const [search,setSearch] = useState(searchQuery)
 
     const  handlelogin = () => {

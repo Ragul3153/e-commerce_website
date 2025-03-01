@@ -22,7 +22,7 @@ const VerticalCardProduct = ({category,heading}) => {
         fetchUserAddToCart()
     }
 
-    const fetchData = asyn()=>{
+    const fetchData = async()=>{
         setloading(true)
         const categoryProduct = await fetchCategoryWiseProduct(category)
         setloading(false)
