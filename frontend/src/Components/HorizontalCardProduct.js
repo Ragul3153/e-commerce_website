@@ -5,6 +5,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import addToCart from '../helpers/addToCart';
 import Context from '../Context';
+import { Link } from 'react-router-dom';
 
 const HorizontalCardProduct = ({category,heading}) => {
     const [data,setdata] = useState([])

@@ -1,9 +1,9 @@
 const productModel = require("../../models/productModel")
 
-const getCategorywiseProduct = async (req, res){
+const getCategorywiseProduct = async (req,res)=>{
     try {
         const {category} = req?.body || req?.query
-        const product = await productModel.find{(category)}
+        const product = await productModel.find({ category })
 
         res.json({
             data : product,

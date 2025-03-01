@@ -6,7 +6,7 @@ import Login from './Components/Login';
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import { ToastContainer } from "react-toastify";
-import Home from "./Components/Home";
+import Home from "./pages/Home";
 import 'react-toastify/dist/ReactToastify.css';
 import SummaryApi from "./common";
 import Context from "./Context";
@@ -20,7 +20,7 @@ import Navbar from "./Components/navbar";
 function App() {
 
   const dispatch = useDispatch()
-  const [cartProductCount,setProductCount] = useState(0)
+  const [cartProductCount,setcartProductCount] = useState(0)
 
   const fetchUserDetails = async () => {
     const dataResponse = await fetch (SummaryApi.current_user.url,{

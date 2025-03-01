@@ -34,9 +34,9 @@ const Cart = () => {
     }
 
   useEffect(()=>{
-        setLoading(true)
+        setloading(true)
         handleLoading()
-        setLoading(false)
+        setloading(false)
   },[])
 
   const increaseQty = async(id,qty) => {
@@ -97,7 +97,6 @@ const Cart = () => {
       body : JSON.stringify(
           {
             _id : id,
-            quantity : qty - 1
           }
       )
     })
@@ -187,7 +186,7 @@ const Cart = () => {
                 <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
                 <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
                   <p>Quantity</p>
-                  <p>{totalQty}</p>
+                  <p>{totalqty}</p>
               </div>
               
               <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>

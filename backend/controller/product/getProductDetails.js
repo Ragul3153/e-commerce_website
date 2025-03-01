@@ -1,9 +1,9 @@
 const productModel = require("../../models/productModel")
 
-const getProductDetails = async(req,res){
+const getProductDetails = async(req,res)=>{
     try{
 
-    const ( productId ) =req.body
+    const { productId } =req.body
 
     const product = await productModel.findById(productId)
 

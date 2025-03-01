@@ -8,7 +8,7 @@ const getCategoryProduct = async(req,res)=> {
     console.log("category",productCategory)
 
     //array to store one product from each category
-    const productCategory = []
+    const productByCategory = []
 
     for(const category of productCategory){
         const product = await productModel.findOne({category})

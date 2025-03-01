@@ -70,11 +70,11 @@ const SummaryApi = {
         method : "post"
     },
     searchProduct : {
-        url : `${backendDomin}/api/search`,
+        url : `${backendDomain}/api/search`,
         method : 'get'
     },
     filterProduct : {
-        url : `${backendDomin}/api/filter-product`,
+        url : `${backendDomain}/api/filter-product`,
         method : 'post'
     }
 }

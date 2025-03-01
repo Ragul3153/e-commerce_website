@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import image1 from "../assets/Banner/img1.webp" 
 import image2 from "../assets/Banner/img2.webp" 
-import image3 from "../assets/Banner/img3.webp" 
-import image4 from "../assets/Banner/img4.webp" 
+import image3 from "../assets/Banner/img3.jpg" 
+import image4 from "../assets/Banner/img4.jpg" 
 import image5 from "../assets/Banner/img5.webp" 
 
 import image1Mobile from "../assets/Banner/img1_mobile.jpg"
-import image2Mobile from "../assets/Banner/img2_mobile.jpg"
+import image2Mobile from "../assets/Banner/img2_mobile.webp"
 import image3Mobile from "../assets/Banner/img3_mobile.jpg"
 import image4Mobile from "../assets/Banner/img4_mobile.jpg"
-import image5Mobile from "../assets/Banner/img5_mobile.jpg"
+import image5Mobile from "../assets/Banner/img5_mobile.png"
 
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../Components/Home";
+import Home from "../pages/Home";
 import Login from "../Components/Login";
 import Adminpanel from "../pages/Adminpanel";
 import Register from "../Components/Register";
@@ -9,6 +9,7 @@ import Allusers from "../pages/Allusers"
 import CategoryProduct from "../pages/CategoryProduct";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
+import SearchProduct from '../pages/SearchProduct'
 
 const router = createBrowserRouter([
     {
