@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import Logo from "../assets/Logo.png"
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify"
 import { setUserDetails } from "../store/userSlice";
@@ -18,8 +18,9 @@ const Navbar = () => {
     const dispatch = useDispatch()
     const [menudisplay,setmenudisplay] = useState(false)
     const context = useContext(Context)
-
     const navigate = useNavigate()
+    const searchInput = useLocation()
+    const [search,setSearch] = useState(searchQuery)
 
     const  handlelogin = () => {
         navigate("/login")
@@ -44,6 +45,17 @@ const Navbar = () => {
         }
     }
 
+    const handleSearch = (e)=>{
+    const { value } = e.target
+    setSearch(value)
+
+    if(value){
+      navigate(`/search?q=${value}`)
+    }else{
+      navigate("/search")
+    }
+  }
+
   return(
         <header className="h-20 shadow-2xl">
                 <div className="h-full container mx-auto flex items-center px-4 justify-between">
@@ -54,7 +66,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="hidden md:flex items-center w-full justify-between max-w-sm border rounded-full  focus-within:shadow-lg pl-2">
-                        <input type="text" placeholder="Search Product here ..." className="w-full outline-none rounded-lg"></input>
+                        <input type="text" placeholder="Search Product here ..." className="w-full outline-none rounded-lg" onChange={handleSearch} value={search}></input>
                         <div className="min-w-[50px] bg-green-700 h-9 flex items-center justify-center rounded-r-full text-white text-3xl cursor-pointer border border-green-700">
                             <IoIosSearch />
                         </div>

@@ -1,11 +1,11 @@
-const addToCartViewProduct = async(req,res){
+const addToCartViewProduct = async(req,res)=>{
     try{
 
     const currentUser = req.userId
 
     const allProduct = await addToCartModel.find({
-        userId : currentUser
-    })
+        userId : currentUser 
+    }).populate("productId")
 
     res.json({
         data : allProduct,

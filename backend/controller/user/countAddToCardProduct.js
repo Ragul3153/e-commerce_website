@@ -1,6 +1,6 @@
 const addToCartModel = require("../../models/cardProduct")
 
-const countAddToCardProduct = async(req,res){
+const countAddToCardProduct = async(req,res)=>{
     try{
         const userId = req.userId
 
