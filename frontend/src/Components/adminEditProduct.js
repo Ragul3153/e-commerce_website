@@ -99,7 +99,7 @@ const AdminEditProduct = ({
                
                 <div className='flex justify-between items-center pb-3'>
                     <h2 className='font-bold text-lg'>Edit Products</h2>
-                    <div className='w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer' onClick={onClose}>
+                    <div className='w-fit ml-auto text-2xl hover:text-green-600 cursor-pointer' onClick={onClose}>
                         <IoMdClose />
                     </div>
                 </div>
@@ -147,7 +147,7 @@ const AdminEditProduct = ({
                                                 setfullscreenimage(el)
                                                 }}/>
     
-                                                <div className='absolute bottom-0 right-0 p-1 text-white bg-red-600 rounded-full hidden group-hover:block cursor-pointer' onClick={()=>handledelete(index)}>
+                                                <div className='absolute bottom-0 right-0 p-1 text-white bg-green-600 rounded-full hidden group-hover:block cursor-pointer' onClick={()=>handledelete(index)}>
                                                     <MdDelete/>
                                                 </div>
                                             </div>
@@ -159,7 +159,7 @@ const AdminEditProduct = ({
                                 <p>*Please Upload Product image</p>
                             )
                         }
-                        <img className='text-red-600 text-xs bg-slate-100 border' src='' width={80} height={80} ></img>
+                        <img className='text-green-600 text-xs bg-slate-100 border' src='' width={80} height={80} ></img>
                     </div>
                         
                         <label htmlFor='price'  className='mt-3'>Price : </label>
@@ -173,7 +173,7 @@ const AdminEditProduct = ({
     
                         </textarea>
     
-                        <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Update Product</button>
+                        <button className='px-3 py-2 bg-green-600 text-white mb-10 hover:bg-green-700'>Update Product</button>
     
                 </form>
             </div>

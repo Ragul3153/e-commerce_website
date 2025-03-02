@@ -27,7 +27,7 @@ router.get("/user-details",authToken,userDetailsController)
 router.get("/userLogout",userLogout)
 
 //admin panel
-router.get("/all-users",authToken,allusers)
+router.get("/allusers",authToken,allusers)
 router.post("/update-user",authToken,updateuser)
 
 //product
@@ -42,7 +42,7 @@ router.post("/filter-product",filterProductController)
 
 //user add to cart
 router.post("/addtocart",authToken,addToCartController)
-router.get("/countAddToCardProduct",authToken,countAddToCardProduct)
+router.get("/countAddToCartProduct",authToken,countAddToCardProduct)
 router.get("/view-cart-product",authToken,addToCartViewProduct)
 router.post("/update-cart-product",authToken,updateAddToCartProduct)
 router.post("/delete-cart-product",authToken,deleteAddToCartProduct)

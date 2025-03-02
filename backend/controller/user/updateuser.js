@@ -1,6 +1,6 @@
 const usermodel = require("../../models/usermodel")
 
-async function updateuserrole(){
+const updateuserrole = async(req,res) => {
     try{
 
     const sessionuser = req.userId
@@ -14,8 +14,6 @@ async function updateuserrole(){
     }
 
     const user = await usermodel.findById(sessionuser)
-
-    console.log("user-role",userrole)
 
     const updateuser = await usermodel.findByIdAndUpdate(userId,payload)
 

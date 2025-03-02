@@ -144,7 +144,7 @@ const UploadProducts = ({
                                             setfullscreenimage(el)
                                             }}/>
 
-                                            <div className='absolute bottom-0 right-0 p-1 text-white bg-red-600 rounded-full hidden group-hover:block cursor-pointer' onClick={()=>handledelete(index)}>
+                                            <div className='absolute bottom-0 right-0 p-1 text-white bg-green-600 rounded-full hidden group-hover:block cursor-pointer' onClick={()=>handledelete(index)}>
                                                 <MdDelete/>
                                             </div>
                                         </div>

@@ -63,7 +63,7 @@ const Allusers = () => {
                                 <td>{el?.role}</td>
                                 <td>{moment(el?.createdAt).format('LL')}</td>
                                 <td>
-                                    <button className="bg-green-200 p-2 rounded-full cursor-pointer hover:bg-green-200 hover:text-white" 
+                                    <button className="bg-green-200 p-2 rounded-full cursor-pointer hover:bg-green-500 hover:text-white" 
                                     onClick={()=>{
                                         setupdateuserdetails(el)
                                         setopenupdaterole(true)
@@ -81,7 +81,7 @@ const Allusers = () => {
         {
             openupdaterole && (
                 <ChangeuserRole 
-                onclose={()=>setopenupdaterole(false)}  
+                onClose={()=>setopenupdaterole(false)}  
                 name={updateuserdetails.name}
                 email={updateuserdetails.email}
                 role={updateuserdetails.role}

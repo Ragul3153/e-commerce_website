@@ -120,12 +120,12 @@ function Register(){
                 </div>
                 
                 <div className="m-3">
-                    <button className="text-center font-bold px-24 py-1 bg-blue-600 border rounded-sm border-transparent text-white">Register</button>
+                    <button className="text-center font-bold px-24 py-1 bg-green-600 border rounded-sm border-transparent text-white">Register</button>
                 </div>
 
                 <div className="flex gap-3  m-3">
                     <p>Already have an account?</p> 
-                    <button className="hover:underline cursor-pointer hover:text-blue-800" onClick={handlelogin}>Login</button>
+                    <button className="hover:underline cursor-pointer hover:text-green-800" onClick={handlelogin}>Login</button>
                 </div>
             </form>
         </div>
