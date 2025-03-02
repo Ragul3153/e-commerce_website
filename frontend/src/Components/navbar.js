@@ -106,7 +106,7 @@ const Navbar = () => {
                                     <FaShoppingCart />
 
                                 <div className="bg-green-700 text-white w-5 h-5 rounded-full flex flex-items justify-center absolute -top-2 -right-3">
-                                    <p className="text-sm">{Context?.cartProdutCount}</p>
+                                    <p className="text-sm">{context?.cartProductCount}</p>
                                 </div>
                         </Link>
                             )

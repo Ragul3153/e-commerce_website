@@ -16,6 +16,10 @@ import Adminpanel from "./pages/Adminpanel";
 import Allproduct from "./pages/Allproduct";
 import Allusers from "./pages/Allusers";
 import Navbar from "./Components/navbar";
+import ProductDetails from "./pages/ProductDetails";
+import CategoryProduct from "./pages/CategoryProduct";
+import SearchProduct from "./pages/SearchProduct";
+import Cart from "./pages/Cart";
 
 function App() {
 
@@ -74,6 +78,10 @@ function App() {
               <Route path="/admin-panel" element={<Adminpanel/>}/>
               <Route path="/admin-panel/all-product" element={<Allproduct/>}/>
               <Route path="/admin-panel/all-users" element={<Allusers/>}/>
+              <Route path="/product/:id" element={<ProductDetails/>}/>
+              <Route path="/product-category" element={<CategoryProduct/>}/>
+              <Route path="search" element={<SearchProduct/>}/>
+              <Route path="cart" element={<Cart/>}/>
             </Routes>
           </div>
         </div>

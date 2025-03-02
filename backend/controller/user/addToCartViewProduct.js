@@ -1,3 +1,5 @@
+const addToCartModel = require("../../models/cardProduct")
+
 const addToCartViewProduct = async(req,res)=>{
     try{
 

@@ -12,8 +12,8 @@ const Cart = () => {
   const loadingCart = new Array(context.cartProductCount).fill(null)
 
   const fetchData = async() => {
-    const response = await fetch(SummaryApi.addToCartProductView.url,{
-      method : SummaryApi.addToCartProductView.method,
+    const response = await fetch(SummaryApi.addToCartViewProduct.url,{
+      method : SummaryApi.addToCartViewProduct.method,
       credentials : "include",
       headers : {
         "content-type" : "application/json"
@@ -63,7 +63,7 @@ const Cart = () => {
   }
 
   const decreaseQty = async(id,qty) => {
-   if(qty < 2){
+   if(qty >= 2){
      const response = await fetch(SummaryApi.updateCartProduct.url,{
       method : SummaryApi.updateCartProduct.method,
       credentials : "include",
@@ -88,7 +88,7 @@ const Cart = () => {
   }
 
   const deleteCartProduct = async(id)=>{
-       const response = await fetch(SummaryApi.deleteCartProduct.url,{
+      const response = await fetch(SummaryApi.deleteCartProduct.url,{
       method : SummaryApi.deleteCartProduct.method,
       credentials : "include",
       headers : {
@@ -105,7 +105,7 @@ const Cart = () => {
 
     if(responseData.success){
       fetchData()
-      context.fetchUserAddTocart()
+      context.fetchUserAddToCart()
     }
   }
 
@@ -161,7 +161,7 @@ const Cart = () => {
 
 
                     <div className='flex items-center gap-3 mt-1'>
-                      <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded' onClick={()=>{decreaseQty(product?._id,product?.quantity)}}></button>
+                      <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded' onClick={()=>{decreaseQty(product?._id,product?.quantity)}}>-</button>
                       <span>{product?.quantity}</span>
                       <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded' onClick={()=>{increaseQty(product?._id,product?.quantity)}}>+</button>
                     </div>
