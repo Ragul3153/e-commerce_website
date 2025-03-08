@@ -15,6 +15,10 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/api",router)
 
+app.get("/", (req, res) => {
+    res.send("This is a e-commerce website server");
+});
+
 connectDB().then(()=>{
     app.listen(4000,()=>{
         console.log("Connected to DB")
