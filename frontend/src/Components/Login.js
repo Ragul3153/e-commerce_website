@@ -34,8 +34,8 @@ function Login(){
 
         try{
 
-            const dataResponse = await fetch("https://e-commerce-website-backend-je4h.onrender.com",{
-            method : "post",
+            const dataResponse = await fetch(SummaryApi.signIn.url,{
+            method : SummaryApi.signIn.method,
             credentials : "include",
             headers : {
                 "content-type" : "application/json"

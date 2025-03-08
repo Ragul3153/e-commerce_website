@@ -6,6 +6,7 @@ import { setDoc, doc } from "firebase/firestore"
 import { ToastContainer,toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
+import SummaryApi from "../common"
 
 function Register(){
     const [email,setemail] = useState("")
@@ -43,8 +44,8 @@ function Register(){
       lname,
     };
 
-        const dataResponse = await fetch("https://e-commerce-website-backend-je4h.onrender.com",{
-                method : "post",
+        const dataResponse = await fetch(SummaryApi.signUP.url,{
+                method : SummaryApi.signUP.method,
                 headers :  {
                     "content-type" : "application/json"
                 },
