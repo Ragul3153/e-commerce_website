@@ -43,7 +43,7 @@ function Register(){
       lname,
     };
 
-        const dataResponse = await fetch("https://e-commerce-website-frontend-sigma.vercel.app",{
+        const dataResponse = await fetch("https://e-commerce-website-backend-je4h.onrender.com",{
                 method : "post",
                 headers :  {
                     "content-type" : "application/json"
