@@ -43,7 +43,7 @@ function Register(){
       lname,
     };
 
-        const dataResponse = await fetch("http://localhost:4000/api/signup",{
+        const dataResponse = await fetch("https://e-commerce-website-frontend-sigma.vercel.app",{
                 method : "post",
                 headers :  {
                     "content-type" : "application/json"
