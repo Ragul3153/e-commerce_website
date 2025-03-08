@@ -1,4 +1,4 @@
-const backendDomain =  "http://localhost:4000"
+const backendDomain =  "https://e-commerce-website-backend-je4h.onrender.com"
 
 const SummaryApi = {
     signUP : {
