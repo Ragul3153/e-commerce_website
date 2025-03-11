@@ -49,21 +49,18 @@ function Login(){
         
         if(dataApi.success){ 
             toast.success(dataApi.message)
-            fetchUserDetails()
-            fetchUserAddToCart()
-            navigate("/")
-            
-        }
-        if(dataApi.error){
-            toast.error(dataApi.message)
-        }
-
             await signInWithEmailAndPassword(auth,email,password);
             console.log("User Logged In Successfull ...")
             toast.success("User Logged In Successfully ...", {
                  position: "top-center",
             });
-            navigate("/");
+            navigate("/")
+            fetchUserDetails()
+            fetchUserAddToCart() 
+        }
+        if(dataApi.error){
+            toast.error(dataApi.message)
+        }
         } catch(error) {
             console.log(error.message);
              toast.error("User Logged In Failed ...", {
